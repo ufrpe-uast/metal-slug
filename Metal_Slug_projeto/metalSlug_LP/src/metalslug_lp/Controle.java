@@ -48,7 +48,7 @@ public class Controle implements KeyListener {
         
         else if (e.getKeyCode() == KeyEvent.VK_W)
             {
-            cenario.personagem.setIcon(new ImageIcon("src/metalslug_lp/atira.gif"));
+            cenario.personagem.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
             //cenario.personagem.setBounds(, y, width, height);
         }
         
