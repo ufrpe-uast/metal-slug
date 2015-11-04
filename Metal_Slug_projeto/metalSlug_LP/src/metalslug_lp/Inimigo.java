@@ -5,10 +5,17 @@
  */
 package metalslug_lp;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Izaquiel
  */
-public class Inimigo {
+public class Inimigo extends JLabel {
+    
+    public Inimigo() {
+        super(new ImageIcon("src/metalslug_lp/inimigo.gif"));        
+    }
     
 }
