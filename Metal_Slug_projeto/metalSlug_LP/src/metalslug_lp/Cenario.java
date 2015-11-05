@@ -18,12 +18,15 @@ public class Cenario extends JFrame{
     public int fase;
     public Jogador jogador;
     public Inimigo inimigo;
+    public Bala bala;
         
     public Cenario(Personagem p)
-    {
-        
-        
+    {   
         super("Metal Slug Java");
+        
+        setVisible(true);
+        setSize(640,400);
+        setResizable(false);
         
         jogador = (Jogador) p;
         
@@ -36,12 +39,10 @@ public class Cenario extends JFrame{
         inimigo.setBounds(0, 250, 1250, 50);
         add(inimigo);
         
-        
-
-        setVisible(true);
-        setSize(640,400);
-        setResizable(false);
-        
+        bala = new Bala();
+        bala.setBounds(10, 10, 30, 30);
+        //add(bala);        
+                        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          
         fundo = new JLabel(new ImageIcon("src/metalslug_lp/background.png"));
@@ -52,6 +53,7 @@ public class Cenario extends JFrame{
         
         
         new ThreadInimigo(inimigo);
+        new ThreadBala(bala);
        
     }
    
