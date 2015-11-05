@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 public class Cenario extends JFrame{
     public JLabel fundo;
     public int fase;
-    public Personagem personagem;
+    public Jogador jogador;
     public Inimigo inimigo;
         
     public Cenario(Personagem p)
@@ -25,19 +25,21 @@ public class Cenario extends JFrame{
         
         super("Metal Slug Java");
         
-        personagem = p;
+        jogador = (Jogador) p;
         
         setLayout(null);       
         
-        add(personagem);
-        personagem.setBounds(0, 250, 100, 50);
+        add(jogador);
+        jogador.setBounds(0, 250, 100, 50);
 
         inimigo = new Inimigo();
-        inimigo.setBounds(400, 250, 100, 50);
+        inimigo.setBounds(0, 250, 1250, 50);
         add(inimigo);
                 
-        while(inimigo.getX() != personagem.getX()) {
-            inimigo.setLocation(inimigo.getX()-1, 250);            
+        while(inimigo.getX() != jogador.getX()) {
+            inimigo.setLocation(
+            inimigo.getX()-10,
+            inimigo.getY());          
         }
 
         setVisible(true);
