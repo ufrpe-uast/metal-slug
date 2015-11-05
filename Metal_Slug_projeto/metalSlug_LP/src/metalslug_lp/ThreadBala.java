@@ -5,37 +5,36 @@
  */
 package metalslug_lp;
 
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
- * @author Izaquiel
+ * @author dapine
  */
-public class ThreadInimigo extends Thread {
-    Inimigo inimigo;
+public class ThreadBala extends Thread {
     
-    ThreadInimigo(final Inimigo inimigoP){
-        inimigo=inimigoP;
-        new Thread(){
+    Bala bala;
+    
+    ThreadBala(final Bala balaP) {
+        bala = balaP;
         
-            
+        new Thread() {
         @Override
         public void run(){
             while(true) {
-                inimigo.setLocation((int) (inimigo.getX()-1),
-                inimigo.getY());  
-                //System.out.println("%ola");                
+                bala.setLocation((int) (bala.getX()+1), bala.getY());  
+                System.out.println("%ola");                
                 try {
-                    sleep(80);
+                    sleep(10);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
            }
         }.start();
-    
     }
+    
 }
