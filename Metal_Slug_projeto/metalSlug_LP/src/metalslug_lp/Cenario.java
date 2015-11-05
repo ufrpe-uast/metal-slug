@@ -35,12 +35,8 @@ public class Cenario extends JFrame{
         inimigo = new Inimigo();
         inimigo.setBounds(0, 250, 1250, 50);
         add(inimigo);
-                
-        while(inimigo.getX() != jogador.getX()) {
-            inimigo.setLocation(
-            inimigo.getX()-10,
-            inimigo.getY());          
-        }
+        
+        
 
         setVisible(true);
         setSize(640,400);
@@ -53,6 +49,10 @@ public class Cenario extends JFrame{
         fundo.setBounds(0, 0, 640, 365);
                 
         addKeyListener(new Controle(this));
-    }    
-    
+        
+        
+        new ThreadInimigo(inimigo);
+       
+    }
+   
 }
