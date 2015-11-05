@@ -5,6 +5,9 @@
  */
 package metalslug_lp;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -20,10 +23,15 @@ public class ThreadInimigo extends Thread {
             
         @Override
         public void run(){
-            while(inimigo.getX()>0) {
+            while(true) {
                 inimigo.setLocation((int) (inimigo.getX()-1),
                 inimigo.getY());  
-                System.out.println("%ola");
+                System.out.println("%ola");                
+                try {
+                    sleep(100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
            }
