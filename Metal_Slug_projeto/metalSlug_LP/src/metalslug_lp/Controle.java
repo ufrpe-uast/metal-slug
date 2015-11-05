@@ -42,7 +42,16 @@ public class Controle implements KeyListener {
         }    
         
         else if (e.getKeyCode() == KeyEvent.VK_W) {
-                cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));                
+                cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
+               
+                cenario.bala=new Bala();
+                
+                cenario.novoTiro(cenario.bala);
+                cenario.tiro(cenario.bala);
+                new ThreadBala(cenario.bala);
+                
+                
+                
             //cenario.personagem.setBounds(, y, width, height);
         }
         

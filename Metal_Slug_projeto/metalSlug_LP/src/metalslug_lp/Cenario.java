@@ -26,7 +26,7 @@ public class Cenario extends JFrame{
         
         setVisible(true);
         setSize(640,400);
-        setResizable(false);
+        setResizable(true);
         
         jogador = (Jogador) p;
         
@@ -39,22 +39,34 @@ public class Cenario extends JFrame{
         inimigo.setBounds(0, 250, 1250, 50);
         add(inimigo);
         
-        bala = new Bala();
-        bala.setBounds(10, 10, 30, 30);
-        //add(bala);        
+        //bala = new Bala();
                         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        addKeyListener(new Controle(this));
          
         fundo = new JLabel(new ImageIcon("src/metalslug_lp/background.png"));
         add(fundo);
-        fundo.setBounds(0, 0, 640, 365);
+        //fundo.setBounds(0, 0, 640, 365);
                 
-        addKeyListener(new Controle(this));
         
         
         new ThreadInimigo(inimigo);
-        new ThreadBala(bala);
+        
        
+    }
+    
+    public void tiro(Bala bala1){
+        add(bala);
+       
+       
+    }
+    
+    public void novoTiro(Bala bala1){
+       
+        bala.setBounds(0, 250, 100, 50);
+        
+        
     }
    
 }
