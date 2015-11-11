@@ -11,6 +11,8 @@ package metalslug_lp;
  */
 public class Jogador extends Personagem {
     public int pontos;
+    public int posicao=250;
+    public char sentido='d';
     
     public Jogador ()
     {

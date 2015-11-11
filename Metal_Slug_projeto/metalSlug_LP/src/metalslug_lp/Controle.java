@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
  */
 public class Controle implements KeyListener {
     public Cenario cenario;
+    public Bala bala;
     public Controle (Cenario c)
     {
         cenario = c;
@@ -27,32 +28,31 @@ public class Controle implements KeyListener {
     @Override    
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT && cenario.jogador.getX()<=500) {
+                    cenario.jogador.sentido='d';
                     cenario.jogador.setLocation(
                     cenario.jogador.getX()+10,
                     cenario.jogador.getY());
-                          
+                    cenario.jogador.posicao=cenario.jogador.getX();      
                     cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/andando_dir.gif"));
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT && cenario.jogador.getX()>=10) {
+                    cenario.jogador.sentido='e';
                     cenario.jogador.setLocation(
                     cenario.jogador.getX()-10,
                     cenario.jogador.getY());
-            
+                    cenario.jogador.posicao=cenario.jogador.getX();  
                     cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/andando_esq.gif"));
         }    
         
         else if (e.getKeyCode() == KeyEvent.VK_W) {
                 cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
-               
-                cenario.bala=new Bala();
                 
+                cenario.bala=new Bala();
                 cenario.novoTiro(cenario.bala);
                 cenario.tiro(cenario.bala);
-                new ThreadBala(cenario.bala);
+                new ThreadBala(cenario.bala,cenario).start();
                 
                 
-                
-            //cenario.personagem.setBounds(, y, width, height);
         }
         
                

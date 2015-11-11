@@ -14,27 +14,52 @@ import java.util.logging.Logger;
  * @author dapine
  */
 public class ThreadBala extends Thread {
-    
-    Bala bala;
-    
-    ThreadBala(final Bala balaP) {
-        bala = balaP;
-        
-        new Thread() {
-        @Override
-        public void run(){
-            while(true) {
-                bala.setLocation((int) (bala.getX()+1), bala.getY());  
-                System.out.println("%ola");                
-                try {
-                    sleep(10);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
 
-           }
-        }.start();
+    private boolean fimThread = false;
+    private Bala bala;
+    private Cenario cenario;
+
+    ThreadBala( Bala balaP,  Cenario cenario) {
+        bala = balaP;
+        this.cenario = cenario;
     }
-    
+
+    @Override
+    public void run() {
+        
+        while (!fimThread) {
+            
+            getBala().setLocation((int) (getBala().getX() + 1), getBala().getY());
+            cenario.repaint();
+//                System.out.println("%ola");                
+            try {
+                sleep(10);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (getBala().getX() > 500) {
+                cenario.remove(getBala());
+                setFimThread(true);
+            }
+            
+        }
+
+    }
+
+    public Bala getBala() {
+        return bala;
+    }
+
+    public void setBala(Bala bala) {
+        this.bala = bala;
+    }
+
+    public boolean isFimThread() {
+        return fimThread;
+    }
+
+    public void setFimThread(boolean fimThread) {
+        this.fimThread = fimThread;
+    }
+
 }

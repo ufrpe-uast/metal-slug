@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 public class Inimigo extends JLabel {
     
     public Inimigo() {
-        super(new ImageIcon("src/metalslug_lp/inimigo.gif"));        
+        super(new ImageIcon("src/metalslug_lp/wjodijh.gif"));        
     }
     
 }

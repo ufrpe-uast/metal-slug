@@ -20,6 +20,12 @@ public class Cenario extends JFrame{
     public Inimigo inimigo;
     public Bala bala;
         
+    
+    
+     public void tiro(Bala bala1){
+        add(bala);
+    }
+     
     public Cenario(Personagem p)
     {   
         super("Metal Slug Java");
@@ -33,10 +39,10 @@ public class Cenario extends JFrame{
         setLayout(null);       
         
         add(jogador);
-        jogador.setBounds(0, 250, 100, 50);
-
+        jogador.setBounds(0, jogador.posicao, 100, 50);
+        
         inimigo = new Inimigo();
-        inimigo.setBounds(0, 250, 1250, 50);
+        inimigo.setBounds(500, 20, 300, 300);
         add(inimigo);
         
         //bala = new Bala();
@@ -47,8 +53,8 @@ public class Cenario extends JFrame{
          
         fundo = new JLabel(new ImageIcon("src/metalslug_lp/background.png"));
         add(fundo);
-        //fundo.setBounds(0, 0, 640, 365);
-                
+        fundo.setBounds(0, 0, 640, 365);
+        
         
         
         new ThreadInimigo(inimigo);
@@ -56,16 +62,18 @@ public class Cenario extends JFrame{
        
     }
     
-    public void tiro(Bala bala1){
-        add(bala);
-       
-       
+    public void Tiro(Bala bala1){
+        
+        
+        
     }
     
     public void novoTiro(Bala bala1){
        
-        bala.setBounds(0, 250, 100, 50);
-        
+       bala1.setBounds(jogador.posicao, 250, 100, 50);
+       add(bala1);
+        remove(fundo);
+        add(fundo);
         
     }
    
