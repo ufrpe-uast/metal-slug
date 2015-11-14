@@ -14,12 +14,12 @@ import java.util.logging.Logger;
  * @author dapine
  */
 public class ThreadBala extends Thread {
-
+    
     private boolean fimThread = false;
     private Bala bala;
     private Cenario cenario;
 
-    ThreadBala( Bala balaP,  Cenario cenario) {
+    ThreadBala(Bala balaP,  Cenario cenario) {
         bala = balaP;
         this.cenario = cenario;
     }
@@ -28,12 +28,10 @@ public class ThreadBala extends Thread {
     public void run() {
         if(cenario.jogador.getSentido() == 'd') {
             while (!fimThread) {
-
                 getBala().setLocation((int) (getBala().getX() + 1), getBala().getY());
 
                 cenario.repaint();
 
-    //                System.out.println("%ola");                
                 try {
                     sleep(2);
                 } catch (InterruptedException ex) {
@@ -43,7 +41,6 @@ public class ThreadBala extends Thread {
                     cenario.remove(getBala());
                     setFimThread(true);
                 }
-
             }
         }
         
@@ -62,7 +59,6 @@ public class ThreadBala extends Thread {
                     cenario.remove(getBala());
                     setFimThread(true);
                 }
-
             }
         }
 
@@ -83,5 +79,5 @@ public class ThreadBala extends Thread {
     public void setFimThread(boolean fimThread) {
         this.fimThread = fimThread;
     }
-
+    
 }

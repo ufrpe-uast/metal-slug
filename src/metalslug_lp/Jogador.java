@@ -10,12 +10,13 @@ package metalslug_lp;
  * @author Izaquiel
  */
 public class Jogador extends Personagem {
+    
     public int pontos;
     public int posicao=250;
     public char sentido='d'; /*direito: d, esquerdo: e*/
+    public boolean podeAtirar = true;
     
-    public Jogador ()
-    {
+    public Jogador() {
         super("src/metalslug_lp/parado.gif");
     }
 
@@ -30,4 +31,5 @@ public class Jogador extends Personagem {
     char getSentido() {
         return this.sentido;
     }
+    
 }

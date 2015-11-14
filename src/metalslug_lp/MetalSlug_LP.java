@@ -5,19 +5,17 @@
  */
 package metalslug_lp;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 /**
  *
  * @author Izaquiel
  */
-public class Personagem extends JLabel {
-    public int life;
-    public int forca;
-    
-    public Personagem (String enderecoImagem)
-    {
-    super(new ImageIcon(enderecoImagem));
+public class MetalSlug_LP {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {        
+        Jogador player = new Jogador();
+        new Cenario(player);
     }
+    
 }

@@ -13,21 +13,15 @@ import javax.swing.JLabel;
  *
  * @author Izaquiel
  */
-public class Cenario extends JFrame{
+public class Cenario extends JFrame {
+    
     public JLabel fundo;
     public int fase;
     public Jogador jogador;
     public Inimigo inimigo;
     public Bala bala;
-        
-    
-    
-    public void tiro(Bala bala1){
-        add(bala);
-    }
      
-    public Cenario(Personagem p)
-    {   
+    public Cenario(Personagem p) {   
         super("Metal Slug Java");
         
         setVisible(true);
@@ -42,11 +36,9 @@ public class Cenario extends JFrame{
         jogador.setBounds(0, jogador.posicao, 100, 50);
         
         inimigo = new Inimigo();
-        inimigo.setBounds(500, 20, 300, 300);
+        inimigo.setBounds(500, 255, 40, 40);
         add(inimigo);
         
-        //bala = new Bala();
-                        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         addKeyListener(new Controle(this));
@@ -55,26 +47,18 @@ public class Cenario extends JFrame{
         add(fundo);
         fundo.setBounds(0, 0, 640, 365);
         
-        
-        
         new ThreadInimigo(inimigo);
-        
-       
     }
     
-    public void Tiro(Bala bala1){
-        
-        
-        
+    public void tiro(Bala bala1) {
+        add(bala);
     }
     
-    public void novoTiro(Bala bala1){
-       
+    public void novoTiro(Bala bala1) {       
        bala1.setBounds(jogador.posicao, 250, 100, 50);
        add(bala1);
        remove(fundo);
        add(fundo);
-        
     }
-   
+    
 }

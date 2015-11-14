@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Izaquiel
+ * @author dapine
  */
-public class Inimigo extends JLabel {
+public class Bala extends JLabel {
     
-    public Inimigo() {
-        super(new ImageIcon("src/metalslug_lp/wjodiJH.gif"));        
+    public Bala() {
+        super(new ImageIcon("src/metalslug_lp/bala.png"));        
     }
     
 }

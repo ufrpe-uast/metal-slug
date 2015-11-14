@@ -10,10 +10,13 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author dapine
+ * @author Izaquiel
  */
-public class Bala extends JLabel {
-    public Bala() {
-        super(new ImageIcon("src/metalslug_lp/bala.png"));        
+public class Personagem extends JLabel {
+    public int life;
+    public int forca;
+    
+    public Personagem(String enderecoImagem) {
+        super(new ImageIcon(enderecoImagem));
     }
 }
