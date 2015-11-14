@@ -39,7 +39,7 @@ public class ThreadBala extends Thread {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (getBala().getX() > 500) {
+                if (getBala().getX() < -25 || getBala().getX() > 640) {
                     cenario.remove(getBala());
                     setFimThread(true);
                 }
@@ -58,7 +58,7 @@ public class ThreadBala extends Thread {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (getBala().getX() > 500) {
+                if (getBala().getX() < -25 || getBala().getX() > 640) {
                     cenario.remove(getBala());
                     setFimThread(true);
                 }
