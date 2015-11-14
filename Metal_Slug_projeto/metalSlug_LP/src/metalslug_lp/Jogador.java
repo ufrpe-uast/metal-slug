@@ -12,7 +12,7 @@ package metalslug_lp;
 public class Jogador extends Personagem {
     public int pontos;
     public int posicao=250;
-    public char sentido='d';
+    public char sentido='d'; /*direito: d, esquerdo: e*/
     
     public Jogador ()
     {
@@ -21,5 +21,13 @@ public class Jogador extends Personagem {
 
     void setActionMap() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    void setSentindo(char sentido) {
+        this.sentido = sentido;
+    }
+    
+    char getSentido() {
+        return this.sentido;
     }
 }

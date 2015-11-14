@@ -22,7 +22,7 @@ public class Cenario extends JFrame{
         
     
     
-     public void tiro(Bala bala1){
+    public void tiro(Bala bala1){
         add(bala);
     }
      
@@ -72,8 +72,8 @@ public class Cenario extends JFrame{
        
        bala1.setBounds(jogador.posicao, 250, 100, 50);
        add(bala1);
-        remove(fundo);
-        add(fundo);
+       remove(fundo);
+       add(fundo);
         
     }
    

@@ -19,6 +19,7 @@ public class Controle implements KeyListener {
     public Controle (Cenario c)
     {
         cenario = c;
+        cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado_dir.gif"));
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Controle implements KeyListener {
     @Override    
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT && cenario.jogador.getX()<=500) {
-                    cenario.jogador.sentido='d';
+                    cenario.jogador.setSentindo('d');
                     cenario.jogador.setLocation(
                     cenario.jogador.getX()+10,
                     cenario.jogador.getY());
@@ -36,7 +37,7 @@ public class Controle implements KeyListener {
                     cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/andando_dir.gif"));
         }
         else if (e.getKeyCode() == KeyEvent.VK_LEFT && cenario.jogador.getX()>=10) {
-                    cenario.jogador.sentido='e';
+                    cenario.jogador.setSentindo('e');
                     cenario.jogador.setLocation(
                     cenario.jogador.getX()-10,
                     cenario.jogador.getY());
@@ -45,12 +46,19 @@ public class Controle implements KeyListener {
         }    
         
         else if (e.getKeyCode() == KeyEvent.VK_W) {
-                cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
+                
                 
                 cenario.bala=new Bala();
                 cenario.novoTiro(cenario.bala);
                 cenario.tiro(cenario.bala);
                 new ThreadBala(cenario.bala,cenario).start();
+                
+                if(cenario.jogador.getSentido() == 'd') {
+                    cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
+                }
+                if(cenario.jogador.getSentido() == 'e') {
+                    cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_esq.gif"));
+                }
                 
                 
         }
@@ -68,7 +76,12 @@ public class Controle implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado.gif"));
+        if(cenario.jogador.getSentido() == 'd')
+            cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado_dir.gif"));
+        
+        if(cenario.jogador.getSentido() == 'e')
+            cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado_esq.gif"));
+        
         if(cenario.jogador.getY()<250) {
             cenario.jogador.setLocation(
             cenario.jogador.getX(),

@@ -26,22 +26,44 @@ public class ThreadBala extends Thread {
 
     @Override
     public void run() {
+        if(cenario.jogador.getSentido() == 'd') {
+            while (!fimThread) {
+
+                getBala().setLocation((int) (getBala().getX() + 1), getBala().getY());
+
+                cenario.repaint();
+
+    //                System.out.println("%ola");                
+                try {
+                    sleep(2);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (getBala().getX() > 500) {
+                    cenario.remove(getBala());
+                    setFimThread(true);
+                }
+
+            }
+        }
         
-        while (!fimThread) {
-            
-            getBala().setLocation((int) (getBala().getX() + 1), getBala().getY());
-            cenario.repaint();
-//                System.out.println("%ola");                
-            try {
-                sleep(10);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
+        if(cenario.jogador.getSentido() == 'e') {
+            while (!fimThread) {
+                getBala().setLocation((int) (getBala().getX() - 1), getBala().getY());
+
+                cenario.repaint();
+    
+                try {
+                    sleep(2);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (getBala().getX() > 500) {
+                    cenario.remove(getBala());
+                    setFimThread(true);
+                }
+
             }
-            if (getBala().getX() > 500) {
-                cenario.remove(getBala());
-                setFimThread(true);
-            }
-            
         }
 
     }
