@@ -41,6 +41,10 @@ public class ThreadBala extends Thread {
                     cenario.remove(getBala());
                     setFimThread(true);
                 }
+                
+                if(getBala().getX() == cenario.inimigo.getX()) {
+                    System.out.println("Morreu");
+                }
             }
         }
         
