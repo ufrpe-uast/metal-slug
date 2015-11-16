@@ -18,7 +18,8 @@ public class Personagem extends JLabel {
     public int posicao;
     public char sentido='d';
     
-    public Personagem(String enderecoImagem) {
-        super(new ImageIcon(enderecoImagem));
+    public Personagem (String enderecoImagem)
+    {
+    super(new ImageIcon(enderecoImagem));
     }
 }

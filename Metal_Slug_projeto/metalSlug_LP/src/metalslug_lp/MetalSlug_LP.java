@@ -10,7 +10,6 @@ package metalslug_lp;
  * @author Izaquiel
  */
 public class MetalSlug_LP {
-<<<<<<< HEAD:Metal_Slug_projeto/metalSlug_LP/src/metalslug_lp/MetalSlug_LP.java
    
     
     
@@ -20,12 +19,6 @@ public class MetalSlug_LP {
     public static void main(String[] args) {
         // TODO code application logic here
         
-=======
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {        
->>>>>>> 32f16de8afeb14c952d38777aca196785b529e28:src/metalslug_lp/MetalSlug_LP.java
         Jogador player = new Jogador();
         new Cenario(player);
     }
