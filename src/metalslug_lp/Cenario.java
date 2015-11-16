@@ -16,19 +16,22 @@ import javax.swing.JLabel;
  *
  * @author Izaquiel
  */
-public class Cenario extends JFrame{
+public class Cenario extends JFrame {
+    
     public JLabel fundo;
     public int fase;
     public Jogador jogador;
     public Inimigo inimigo;
     public Bala bala;
+<<<<<<< HEAD:Metal_Slug_projeto/metalSlug_LP/src/metalslug_lp/Cenario.java
         
     
     
     
+=======
+>>>>>>> 32f16de8afeb14c952d38777aca196785b529e28:src/metalslug_lp/Cenario.java
      
-    public Cenario(Personagem p)
-    {   
+    public Cenario(Personagem p) {   
         super("Metal Slug Java");
         
         setVisible(true);
@@ -48,8 +51,15 @@ public class Cenario extends JFrame{
         
         novoInimigo();
         
+<<<<<<< HEAD:Metal_Slug_projeto/metalSlug_LP/src/metalslug_lp/Cenario.java
         
                         
+=======
+        inimigo = new Inimigo();
+        inimigo.setBounds(500, 255, 40, 40);
+        add(inimigo);
+        
+>>>>>>> 32f16de8afeb14c952d38777aca196785b529e28:src/metalslug_lp/Cenario.java
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         addKeyListener(new Controle(this));
@@ -58,6 +68,7 @@ public class Cenario extends JFrame{
         add(fundo);
         fundo.setBounds(0, 0, 640, 365);
         
+<<<<<<< HEAD:Metal_Slug_projeto/metalSlug_LP/src/metalslug_lp/Cenario.java
         
         
         
@@ -84,6 +95,20 @@ public class Cenario extends JFrame{
     public void ajusteFundo(){
         remove(fundo);
         add(fundo);
+=======
+        new ThreadInimigo(inimigo);
     }
-   
+    
+    public void tiro(Bala bala1) {
+        add(bala);
+    }
+    
+    public void novoTiro(Bala bala1) {       
+       bala1.setBounds(jogador.posicao, 250, 100, 50);
+       add(bala1);
+       remove(fundo);
+       add(fundo);
+>>>>>>> 32f16de8afeb14c952d38777aca196785b529e28:src/metalslug_lp/Cenario.java
+    }
+    
 }
