@@ -45,14 +45,16 @@ public class Controle implements KeyListener {
         }    
         
         else if (e.getKeyCode() == KeyEvent.VK_W) {
-                cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
-                
+                if(cenario.jogador.sentido=='d'){
+                    cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_dir.gif"));
+                }
+                else if(cenario.jogador.sentido=='e'){
+                    cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_esq.gif"));
+                }                            
                 cenario.bala=new Bala();
+                cenario.bala.posicao = cenario.jogador.posicao;
                 cenario.novoTiro(cenario.bala);
-                cenario.tiro(cenario.bala);
-                new ThreadBala(cenario.bala,cenario).start();
-                
-                
+                new ThreadBala(cenario.bala,cenario,cenario.jogador.sentido).start();
         }
         
                
@@ -68,12 +70,19 @@ public class Controle implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado.gif"));
+        //cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado.gif"));
         if(cenario.jogador.getY()<250) {
             cenario.jogador.setLocation(
             cenario.jogador.getX(),
             cenario.jogador.getY()+50);
         }
+        
+        if(cenario.jogador.sentido=='d'){
+            cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado.gif"));
+            }
+            else if(cenario.jogador.sentido=='e'){
+            cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_esq.gif"));
+            }
         
         //cenario.inimigo.setLocation(cenario.inimigo.getY()-5, 250);
     }

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
  * @author dapine
  */
 public class Bala extends JLabel {
+    public int posicao;
     public Bala() {
         super(new ImageIcon("src/metalslug_lp/bala.png"));        
     }

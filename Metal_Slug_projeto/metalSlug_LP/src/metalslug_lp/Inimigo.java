@@ -6,16 +6,14 @@
 package metalslug_lp;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
  * @author Izaquiel
  */
-public class Inimigo extends JLabel {
-    
+public class Inimigo extends Personagem {
+
     public Inimigo() {
-        super(new ImageIcon("src/metalslug_lp/wjodijh.gif"));        
+        super("src/metalslug_lp/inimigoET.gif");        
     }
-    
 }

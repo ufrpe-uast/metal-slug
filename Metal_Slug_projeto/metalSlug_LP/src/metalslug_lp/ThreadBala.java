@@ -18,10 +18,13 @@ public class ThreadBala extends Thread {
     private boolean fimThread = false;
     private Bala bala;
     private Cenario cenario;
+    public char direcao;
+    
 
-    ThreadBala( Bala balaP,  Cenario cenario) {
+    ThreadBala( Bala balaP,  Cenario cenario,char direcao) {
         bala = balaP;
         this.cenario = cenario;
+        this.direcao=direcao;
     }
 
     @Override
@@ -29,21 +32,35 @@ public class ThreadBala extends Thread {
         
         while (!fimThread) {
             
+            if(direcao=='d'){
             getBala().setLocation((int) (getBala().getX() + 1), getBala().getY());
-            cenario.repaint();
-//                System.out.println("%ola");                
+            this.bala.posicao=getBala().getX();
+            }
+            else if(direcao=='e'){
+            getBala().setLocation((int) (getBala().getX() - 1), getBala().getY());
+            this.bala.posicao=getBala().getX();
+            }
             try {
-                sleep(10);
+                sleep(3);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (getBala().getX() > 500) {
-                cenario.remove(getBala());
-                setFimThread(true);
+            if (getBala().getX() >= 600) {
+                finalBala();
             }
             
+            if(cenario.inimigo.posicao==this.bala.posicao){
+                cenario.inimigo.life-=50;
+                finalBala();
+                
+            }
         }
-
+        cenario.repaint();
+    }
+    
+    public void finalBala(){
+        cenario.remove(getBala());
+        setFimThread(true);
     }
 
     public Bala getBala() {

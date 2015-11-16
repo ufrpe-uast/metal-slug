@@ -7,6 +7,7 @@ package metalslug_lp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -14,28 +15,64 @@ import java.util.logging.Logger;
  * @author Izaquiel
  */
 public class ThreadInimigo extends Thread {
-    Inimigo inimigo;
+    public Inimigo inimigo;
+    public Cenario cenario;
+    private boolean fimThread = false;
     
-    ThreadInimigo(final Inimigo inimigoP){
+            
+    
+    
+    ThreadInimigo(final Inimigo inimigoP, Cenario c){
         inimigo=inimigoP;
-        new Thread(){
+        cenario=c;
+        }
         
             
         @Override
         public void run(){
-            while(true) {
+            while(!fimThread) {
                 inimigo.setLocation((int) (inimigo.getX()-1),
                 inimigo.getY());  
-                //System.out.println("%ola");                
+                inimigo.posicao=inimigo.getX();       
+                
+                if(inimigo.life==0){
+                    inimigo.setIcon(new ImageIcon("src/metalslug_lp/rebels.101.gif"));
+                    try {
+                    sleep(1000);
+                    cenario.repaint();
+                    } catch (InterruptedException ex) {
+                    Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    cenario.remove(getInimigo());
+                    setFimThread(true);
+                    cenario.novoInimigo();
+                    cenario.ajusteFundo();
+                }
                 try {
                     sleep(80);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }  
+            }
+        }
+
+            private void setFimThread(boolean fimThread) {
+                this.fimThread = fimThread;
             }
             
-           }
-        }.start();
-    
-    }
-}
+            public boolean isFimThread() {
+            return fimThread;
+            }
+
+            public Inimigo getInimigo() {
+                return inimigo;
+            }
+            
+            public void setBala(Inimigo inimigo) {
+            this.inimigo = inimigo;
+            }
+
+            
+        
+} 
+

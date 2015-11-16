@@ -5,9 +5,12 @@
  */
 package metalslug_lp;
 
+import java.awt.Color;
+import javafx.scene.layout.BackgroundImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 
 /**
  *
@@ -22,9 +25,7 @@ public class Cenario extends JFrame{
         
     
     
-     public void tiro(Bala bala1){
-        add(bala);
-    }
+    
      
     public Cenario(Personagem p)
     {   
@@ -38,14 +39,16 @@ public class Cenario extends JFrame{
         
         setLayout(null);       
         
+        jogador.posicao=0;
+        jogador.life=200;
         add(jogador);
-        jogador.setBounds(0, jogador.posicao, 100, 50);
+        jogador.setBounds(jogador.posicao, 250, 100, 50);
         
-        inimigo = new Inimigo();
-        inimigo.setBounds(500, 20, 300, 300);
-        add(inimigo);
+        new ThreadJogador(this,jogador).start();
         
-        //bala = new Bala();
+        novoInimigo();
+        
+        
                         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -57,24 +60,30 @@ public class Cenario extends JFrame{
         
         
         
-        new ThreadInimigo(inimigo);
         
        
     }
     
-    public void Tiro(Bala bala1){
-        
-        
-        
-    }
     
     public void novoTiro(Bala bala1){
-       
-       bala1.setBounds(jogador.posicao, 250, 100, 50);
+       bala1.setBounds(bala.posicao, 250, 100, 50);
        add(bala1);
+        ajusteFundo();
+    }
+    
+    public void novoInimigo(){
+        inimigo = new Inimigo();
+        inimigo.posicao=600;
+        inimigo.life=100;
+        inimigo.setBounds(inimigo.posicao, 250, 100, 50);
+        add(inimigo);
+        repaint();
+        new ThreadInimigo(inimigo,this).start();
+    }
+    
+    public void ajusteFundo(){
         remove(fundo);
         add(fundo);
-        
     }
    
 }

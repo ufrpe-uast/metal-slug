@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 public class Personagem extends JLabel {
     public int life;
     public int forca;
+    public int posicao;
+    public char sentido='d';
     
     public Personagem (String enderecoImagem)
     {
