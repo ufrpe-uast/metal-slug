@@ -27,18 +27,18 @@ public class Controle implements KeyListener {
 
     @Override    
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT && cenario.jogador.getX()<=500) {
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT && cenario.jogador.getX()<=1200) {
                     cenario.jogador.sentido='d';
                     cenario.jogador.setLocation(
-                    cenario.jogador.getX()+10,
+                    cenario.jogador.getX()+5,
                     cenario.jogador.getY());
                     cenario.jogador.posicao=cenario.jogador.getX();      
                     cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/andando_dir.gif"));
         }
-        else if (e.getKeyCode() == KeyEvent.VK_LEFT && cenario.jogador.getX()>=10) {
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT && cenario.jogador.getX()>=0) {
                     cenario.jogador.sentido='e';
                     cenario.jogador.setLocation(
-                    cenario.jogador.getX()-10,
+                    cenario.jogador.getX()-5,
                     cenario.jogador.getY());
                     cenario.jogador.posicao=cenario.jogador.getX();  
                     cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/andando_esq.gif"));
@@ -58,11 +58,20 @@ public class Controle implements KeyListener {
         }
         
                
-        else if (e.getKeyCode() == KeyEvent.VK_SPACE && cenario.jogador.getY()>= 250 && cenario.jogador.getX()>=0 && cenario.jogador.getX()<=450)
+        else if (e.getKeyCode() == KeyEvent.VK_SPACE && cenario.jogador.getY()>= 250 && cenario.jogador.getX()>=-10 && cenario.jogador.getX()<=1150)
             {    
+                if(cenario.jogador.sentido=='d'){
                     cenario.jogador.setLocation(
                     cenario.jogador.getX()+100,
                     cenario.jogador.getY()-50);  
+                    cenario.jogador.posicao=cenario.jogador.getX(); 
+                }
+                else{
+                    cenario.jogador.setLocation(
+                    cenario.jogador.getX()-100,
+                    cenario.jogador.getY()-50);  
+                    cenario.jogador.posicao=cenario.jogador.getX();
+                }
         }
         
         
@@ -70,7 +79,6 @@ public class Controle implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        //cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/parado.gif"));
         if(cenario.jogador.getY()<250) {
             cenario.jogador.setLocation(
             cenario.jogador.getX(),
@@ -83,8 +91,7 @@ public class Controle implements KeyListener {
             else if(cenario.jogador.sentido=='e'){
             cenario.jogador.setIcon(new ImageIcon("src/metalslug_lp/atira_esq.gif"));
             }
-        
-        //cenario.inimigo.setLocation(cenario.inimigo.getY()-5, 250);
+            cenario.jogador.posicao=cenario.jogador.getX(); 
     }
   
 }

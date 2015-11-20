@@ -45,14 +45,18 @@ public class ThreadBala extends Thread {
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadInimigo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (getBala().getX() >= 600) {
+            if (getBala().getX() >= 1200 || getBala().getX()<=0 ) {
                 finalBala();
             }
             
             if(cenario.inimigo.posicao==this.bala.posicao){
                 cenario.inimigo.life-=50;
                 finalBala();
-                
+            }
+            if(cenario.jogador.posicao==this.bala.posicao){
+                cenario.jogador.life-=50;
+                finalBala();
+                cenario.MostrarVida(cenario.jogador.life);
             }
         }
         cenario.repaint();

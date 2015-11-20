@@ -5,6 +5,9 @@
  */
 package metalslug_lp;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Izaquiel
@@ -18,9 +21,16 @@ public class MetalSlug_LP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+       String nome = null;
+            while(nome == null || nome.equals("")){
+                nome = JOptionPane.showInputDialog("Digite seu nome para iniciar: ");
+                if(nome == null || nome.equals("")){
+                    JOptionPane.showMessageDialog(null, "Nome inválido!");
+                }
+            }
+        
         
         Jogador player = new Jogador();
-        new Cenario(player);
-    }
-    
-}
+        new Cenario(player,nome);
+    }    
+}    

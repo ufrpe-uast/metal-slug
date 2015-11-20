@@ -12,6 +12,7 @@ package metalslug_lp;
  */
 public class Jogador extends Personagem {
     public int pontos;
+    public String nome;
     
     public Jogador ()
     {
