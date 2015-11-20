@@ -36,7 +36,7 @@ public class ThreadInimigo extends Thread {
                 inimigo.posicao=inimigo.getX();       
                 
                 //Inimigo atira
-                if(inimigo.getX() % 5 == 0){
+                if(inimigo.getX() % 15 == 0){
                 cenario.bala=new Bala();
                 cenario.bala.posicao = cenario.inimigo.posicao;
                 if(cenario.jogador.posicao<inimigo.posicao){
