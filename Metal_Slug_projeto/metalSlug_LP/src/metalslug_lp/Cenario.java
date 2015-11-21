@@ -5,8 +5,6 @@
  */
 package metalslug_lp;
 
-import java.awt.Color;
-import javafx.scene.layout.BackgroundImage;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,17 +15,12 @@ import javax.swing.JLabel;
  * @author Izaquiel
  */
 public class Cenario extends JFrame{
-    public JLabel fundo;
-    public int fase;
+    public JLabel fundo;    
     public Jogador jogador;
     public Inimigo inimigo;
     public Bala bala;
     public JLabel pontos;
-    public JLabel vida;
-        
-    
-    
-    
+    public JLabel vida;    
      
     public Cenario(Personagem p, String nome)
     {   

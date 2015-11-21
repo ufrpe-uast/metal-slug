@@ -49,18 +49,18 @@ public class ThreadJogador extends Thread {
     }
     
     private void setFimThread(boolean fimThread) {
-                this.fimThread = fimThread;
-            }
+        this.fimThread = fimThread;
+    }
             
-            public boolean isFimThread() {
-            return fimThread;
-            }
+    public boolean isFimThread() {
+        return fimThread;
+    }
 
-            public Jogador getJogador() {
-                return jogador;
-            }
-            
-            public void setBala(Jogador jogador) {
-            this.jogador = jogador;
-            }
+    public Jogador getJogador() {
+        return jogador;
+    }
+
+    public void setBala(Jogador jogador) {
+        this.jogador = jogador;
+    }
 }
